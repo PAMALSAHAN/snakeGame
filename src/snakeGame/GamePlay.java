@@ -28,6 +28,8 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	
 	private Timer timer; 
 	
+	private int moves=0;
+	
 	private int delay=100;
 	
 	private ImageIcon titleImage;
@@ -36,6 +38,7 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	private ImageIcon leftmouth;
 	private ImageIcon upmouth;
 	private ImageIcon downmouth;
+	private ImageIcon snakeimage;
 	
 	public GamePlay() {
 		addKeyListener(this);  //key lisner eka wada karanna denne methanin
@@ -51,6 +54,16 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	
 	public void paint(Graphics g) {  //in here paint is the method automatically invoke wenawa 
 		
+		if(moves==0) {
+			snakeXLength[2]=50;
+			snakeXLength[1]=75;
+			snakeXLength[0]=100;
+			
+			snakeYLength[2]=100;
+			snakeYLength[1]=100;
+			snakeYLength[0]=100;
+			
+		}
 		//draw the image border
 		g.setColor(Color.green);
 		g.drawRect(24, 10, 851, 55); //snaketitle eke border eka x,y,with,and height rect ekak
@@ -71,6 +84,30 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 		rightmouth.paintIcon(this, g, snakeXLength[0], snakeYLength[0]);
 		
 		for(int a=0; a<LengthOfSnake ;a++) {
+			
+			if(a==0 && right) {
+				rightmouth=new ImageIcon("rightmouth.png");
+				rightmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+			}
+			
+			if(a==0 && left) {
+				leftmouth=new ImageIcon("leftmouth.png");
+				leftmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+			}
+			
+			if(a==0 && down) {
+				downmouth=new ImageIcon("downmouth.png");
+				downmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+			}
+			
+			if(a==0 && right) {
+				upmouth=new ImageIcon("upmouth.png");
+				upmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+			}
+			if(a!=0) {
+				snakeimage=new ImageIcon("snakeimage.png");
+				snakeimage.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+			}
 			
 		}
 		
