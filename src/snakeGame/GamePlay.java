@@ -24,11 +24,11 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	private boolean up=false;
 	private boolean down=false;
 	
-	private int LengthOfSnake=3;
+	private int LengthOfSnake=3; //methanadi length eka aniwa thunai
 	
 	private Timer timer; 
 	
-	private int moves=0;
+	private int moves=0; //kisima move ekak natiwa komada kiyala balanawa
 	
 	private int delay=100;
 	
@@ -85,25 +85,26 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 		
 		for(int a=0; a<LengthOfSnake ;a++) {
 			
-			if(a==0 && right) {
-				rightmouth=new ImageIcon("rightmouth.png");
-				rightmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
-			}
+//			if(a==0 && right) {
+//				rightmouth=new ImageIcon("rightmouth.png");
+//				rightmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+//			}
+//			
+//			if(a==0 && left) {
+//				leftmouth=new ImageIcon("leftmouth.png");
+//				leftmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+//			}
+//			
+//			if(a==0 && down) {
+//				downmouth=new ImageIcon("downmouth.png");
+//				downmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+//			}
+//			
+//			if(a==0 && right) {
+//				upmouth=new ImageIcon("upmouth.png");
+//				upmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
+//			}
 			
-			if(a==0 && left) {
-				leftmouth=new ImageIcon("leftmouth.png");
-				leftmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
-			}
-			
-			if(a==0 && down) {
-				downmouth=new ImageIcon("downmouth.png");
-				downmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
-			}
-			
-			if(a==0 && right) {
-				upmouth=new ImageIcon("upmouth.png");
-				upmouth.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
-			}
 			if(a!=0) {
 				snakeimage=new ImageIcon("snakeimage.png");
 				snakeimage.paintIcon(this, g, snakeXLength[a], snakeYLength[a]);
@@ -118,6 +119,78 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			moves++;
+//			right=true;
+//			left=false;  mekedi karanna right true karala left false karana eka
+//			up=false;
+//			down=false;
+			right=true;
+			if(!left) {
+				  right=true;
+			}
+			else {
+				right=false;
+				left=true;
+			}
+			
+			up=false;
+			down=false;
+			
+		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+			moves++;
+//			right=true;
+//			left=false;  mekedi karanna right true karala left false karana eka
+//			up=false;
+//			down=false;
+			left=true;
+			if(!right) {
+				  left=true;
+			}
+			else {
+				right=false;
+				left=true;
+			}
+			
+			up=false;
+			down=false;
+			
+		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_UP) {
+			moves++;
+			up=true;
+			if(!up) {
+				down=true;
+			}
+			else {
+				down=false;
+				up=true;
+			}
+			
+			left=false;
+			right=false;
+		}
+		
+		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			moves++;
+			down=true;
+			if(!down) {
+				up=true;
+			}
+			else {
+				down=true;
+				up=false;
+			}
+			
+			left=false;
+			right=false;
+		}
+		
+
+		
 		
 	}
 
