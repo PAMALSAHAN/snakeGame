@@ -209,6 +209,12 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		timer.start();
+		if(right) {
+			for(int r=LengthOfSnake-1;r>=0;r--) {
+				snake
+			}
+		}
 		
 	}
 
