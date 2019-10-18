@@ -230,6 +230,22 @@ public class GamePlay extends JPanel implements ActionListener,KeyListener {
 		}
 		
 		if(left) {
+			for(int r=LengthOfSnake-1;r>=0;r--) {
+				snakeYLength[r+1]=snakeYLength[r];
+			}
+			for(int r=LengthOfSnake;r>=0;r--) {
+				if(r==0) {
+					snakeXLength[r]=snakeXLength[r]-25;
+				}
+				else {
+					snakeXLength[r]=snakeXLength[r-1];
+				}
+				if(snakeXLength[r]<25) {
+					snakeXLength[r]=850;
+				}
+				
+			}
+			repaint();
 			
 		}
 		if(up) {
